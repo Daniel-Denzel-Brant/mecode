@@ -1,140 +1,143 @@
 #include <iostream>
 #include <algorithm>
 
-
 using namespace std;
 
 class Fraction
 {
 private:
-    int numerator;
-    int denominator;
+    	int numerator;
+    	int denominator;
 public:
-    Fraction();
-    Fraction(int , int );
-    int getNumerator() const;
-    int getDenominator() const;
-    void setNumerator(int );
-    void setDenominator(int );
-    void display();
-    Fraction operator +(const Fraction& fraction2);
-    Fraction operator -(const Fraction& fraction2);
-	  Fraction operator *(const Fraction& fraction2);
-	  Fraction operator /(const Fraction& fraction2);
-	  Fraction operator !();
-	  friend ostream& operator <<(ostream& , const Fraction&);
+    	Fraction();
+    	Fraction(int , int );
+    	int getNumerator() const;
+    	int getDenominator() const;
+    	void setNumerator(int );
+    	void setDenominator(int );
+    	void display();
+    	Fraction operator +(const Fraction& fraction2);
+    	Fraction operator -(const Fraction& fraction2);
+    	Fraction operator *(const Fraction& fraction2);
+	Fraction operator /(const Fraction& fraction2);
+	Fraction operator !();
+	friend ostream& operator <<(ostream& , const Fraction&);
 };
+
 Fraction::Fraction()
 {
-    this->setNumerator(0);
-    this->setDenominator(0);
+    	this->setNumerator(0);
+    	this->setDenominator(0);
 }
 
 Fraction::Fraction(int _numerator, int _denominator)
 {   
-    if(_numerator == 0 || _denominator == 0){
-        this->setNumerator(0);
-        this->setDenominator(0);
-    }
-    else{
-        int gcd = 1;
-        this->setNumerator(_numerator/gcd);
-        this->setDenominator(_denominator/gcd);
+    	if(_numerator == 0 || _denominator == 0)
+	{
+        	this->setNumerator(0);
+        	this->setDenominator(0);
+    	}
+    	else
+	{
+        	int gcd = 1;
+        	this->setNumerator(_numerator/gcd);
+        	this->setDenominator(_denominator/gcd);
     }
 }
 
 void Fraction::setNumerator(int _n)
 {
-    numerator = _n;
+    	numerator = _n;
 }
 
 void Fraction::setDenominator(int _n)
 {
-    denominator = _n;
+    	denominator = _n;
 }
 
 int Fraction::getNumerator() const
 {
-    return this->numerator;
+    	return this->numerator;
 }
 
 int Fraction::getDenominator() const
 {
-    return this->denominator;
+    	return this->denominator;
 }
 
 void Fraction::display()
 {
-    int num = getNumerator();
-	  int dem = getDenominator();
-	  int gcd = __gcd(num,dem);
-    num = num/gcd;
-    dem = dem/gcd;     
+    	int num = getNumerator();
+	int dem = getDenominator();
+	int gcd = __gcd(num,dem);
+    	num = num/gcd;
+    	dem = dem/gcd;     
 	  
-    if(dem == 1)
-    {
-        cout<<num;
-    }
-    else{
-       cout<<"("<<num<<"/"<<dem<<")";
-    }
+    	if(dem == 1)
+    	{
+        	cout<<num;
+    	}
+    	else
+	{
+       		cout<<"("<<num<<"/"<<dem<<")";
+	}
 }
 
 Fraction Fraction::operator +(const Fraction& fraction2)
 {
-	  int ansNum = getNumerator()*fraction2.getDenominator() + 
-	  fraction2.getNumerator()*getDenominator();
-	  int ansDen = getDenominator()*fraction2.getDenominator();
-	  Fraction ansFrac(ansNum,ansDen);
-	  return ansFrac;
+	int ansNum = getNumerator()*fraction2.getDenominator() + 
+	fraction2.getNumerator()*getDenominator();
+	int ansDen = getDenominator()*fraction2.getDenominator();
+	Fraction ansFrac(ansNum,ansDen);
+	return ansFrac;
 }
 
 Fraction Fraction::operator -(const Fraction& fraction2)
 {	
-	  int ansNum = getNumerator()*fraction2.getDenominator() - 
-		fraction2.getNumerator()*getDenominator();
-	  int ansDen = getDenominator()*fraction2.getDenominator();
-	  Fraction ansFrac(ansNum,ansDen);
-	  return ansFrac;
+	int ansNum = getNumerator()*fraction2.getDenominator() - 
+	fraction2.getNumerator()*getDenominator();
+	int ansDen = getDenominator()*fraction2.getDenominator();
+	Fraction ansFrac(ansNum,ansDen);
+	return ansFrac;
 }
 
 Fraction Fraction::operator *(const Fraction& fraction2)
 {
-	  int ansNum = getNumerator()*fraction2.getNumerator();
-	  int ansDen = getDenominator()*fraction2.getDenominator();
-	  Fraction ansFrac(ansNum,ansDen);
-	  return ansFrac;
+	int ansNum = getNumerator()*fraction2.getNumerator();
+	int ansDen = getDenominator()*fraction2.getDenominator();
+	Fraction ansFrac(ansNum,ansDen);
+	return ansFrac;
 }
 
 Fraction Fraction::operator !()
 {
-	  Fraction ansFrac(this->getDenominator(),this->getNumerator());
-	  return ansFrac;
+	Fraction ansFrac(this->getDenominator(),this->getNumerator());
+	return ansFrac;
 }
 
 Fraction Fraction::operator /(const Fraction& fraction2)
 {	
-	  int ansNum = getNumerator()*fraction2.getDenominator();
-	  int ansDen = getDenominator()*fraction2.getNumerator();
-	  Fraction ansFrac(ansNum,ansDen);
-	  return ansFrac;
+	int ansNum = getNumerator()*fraction2.getDenominator();
+	int ansDen = getDenominator()*fraction2.getNumerator();
+	Fraction ansFrac(ansNum,ansDen);
+	return ansFrac;
 }
 
 ostream& operator <<( ostream& os,const Fraction& f)
 {
-	  int num = f.getNumerator();
-	  int dem = f.getDenominator();
-    int gcd = __gcd(num,dem);
-    num = num/gcd;
-    dem = dem/gcd;
+	int num = f.getNumerator();
+	int dem = f.getDenominator();
+    	int gcd = __gcd(num,dem);
+    	num = num/gcd;
+    	dem = dem/gcd;
         
-	  if(dem == 1)
-    {
-        os<<"("<<num<<")";
-    }
-    else
-    {
-       os<<"("<<num<<"/"<<dem<<")";
-    }
-	  return os;
+	if(dem == 1)
+    	{
+        	os<<"("<<num<<")";
+    	}
+    	else
+    	{
+       		os<<"("<<num<<"/"<<dem<<")";
+    	}
+return os;
 }
