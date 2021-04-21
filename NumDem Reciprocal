@@ -42,7 +42,7 @@ Fraction::Fraction(int _numerator, int _denominator)
         	int gcd = 1;
         	this->setNumerator(_numerator/gcd);
         	this->setDenominator(_denominator/gcd);
-    }
+  	}
 }
 
 void Fraction::setNumerator(int _n)
