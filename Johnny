@@ -30,7 +30,7 @@ int main()
 					{
 						maze[i][j] = '_';
 					}
-			}
+				}
 				else
 				}
 					if(j % 2 == 0)
@@ -113,6 +113,6 @@ int main()
 			}
 			cout<<endl;
 		}
-			cout<<endl;
+		cout<<endl;
 	}
 }
